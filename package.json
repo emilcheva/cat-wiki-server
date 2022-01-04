@@ -1,0 +1,24 @@
+{
+  "name": "cat-wiki-devchallenge",
+  "version": "1.0.0",
+  "description": "back-end for the Cat Wiki challenge",
+  "scripts": {
+    "start": "node server",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "apollo-datasource-rest": "^3.4.0",
+    "apollo-server": "^3.5.0",
+    "graphql": "^15.7.2"
+  },
+  "devDependencies": {
+    "dotenv": "^8.2.0",
+    "nodemon": "^2.0.4"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/emilcheva/cat-wiki-devchallenge.git"
+  },
+  "author": "emilcheva",
+  "license": "ISC",
+}
