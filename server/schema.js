@@ -1,6 +1,12 @@
 const { gql } = require("apollo-server");
 
 const typeDefs = gql`
+"Image url for a breed"
+type BreedImage{
+  id: ID!
+  url: String!
+}
+
 "All the info about a cat's breed"
   type Breed{
     id: ID!
@@ -17,19 +23,12 @@ const typeDefs = gql`
     health_issues: Int
     social_needs: Int
     stranger_friendly: Int
-  }
-
-  type CatInfo{
-    breeds: [Breed ]
-    id: ID!
-    url: String
+    breedImage: [ BreedImage ]!
   }
 
   type Query{
     "Get cat breeds with option to limit the results"
     getBreeds(limit: Int): [Breed]
-    "Get a set of images by cat breed ID"
-    getImagesOfBreed (breedId: ID!, limit: Int): [ CatInfo ]
     "Get breeds by name"
     getBreedsByName(breedName: String): [ Breed ]
   }

@@ -1,9 +1,5 @@
 const resolvers = {
   Query: {
-    // get all images for a breed, given by Breed Name
-    getImagesOfBreed: (_, { breedId, limit }, { dataSources }) => {
-      return dataSources.catAPI.getImagesOfBreed(breedId, limit);
-    },
     // get all breeds, limit them if needed
     getBreeds: (_, { limit }, { dataSources }) => {
       return dataSources.catAPI.getBreeds(limit);
@@ -12,7 +8,13 @@ const resolvers = {
     getBreedsByName: (_, { breedName }, { dataSources }) => {
       return dataSources.catAPI.getBreedsByName(breedName);
     },
-  }
+  },
+  Breed: {
+    // get all images for a breed, given a breed id, also get 9 unique images
+    breedImage : ({ id }, _, { dataSources }) => {
+      return dataSources.catAPI.getImagesOfBreed(id, limit = 9);
+    },
+  },
 };
 
 module.exports = resolvers;
