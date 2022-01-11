@@ -3,7 +3,18 @@ const typeDefs = require('./schema');
 const resolvers = require('./resolvers');
 const catAPI = require('./datasources/cat-api');
 
+const normalizeCamelToSnakeCase = (string) => (
+  words(toString(string).replace(/['\u2019]/g, '')).reduce((result, word, index) => (
+    result + (index ? '_' : '') + word.toLowerCase()
+  ), '')
+)
+
+const snakeCaseFieldResolver = (source, args, contextValue, info) => {
+  return source[normalizeCamelToSnakeCase(info.fieldName)]
+}
+
 const server = new ApolloServer({
+  fieldResolver: snakeCaseFieldResolver,
   typeDefs,
   resolvers,
   dataSources: () => {

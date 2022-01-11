@@ -14,23 +14,23 @@ const typeDefs = gql`
     name: String
     temperament: String
     origin: String
-    life_span: String
+    lifeSpan: String
     adaptability: Int
-    affection_level: Int
-    child_friendly: Int
+    affectionLevel: Int
+    childFriendly: Int
     grooming: Int
     intelligence: Int
-    health_issues: Int
-    social_needs: Int
-    stranger_friendly: Int
-    breedImage: [BreedImage]!
+    healthIssues: Int
+    socialNeeds: Int
+    strangerFriendly: Int
+    breedImage: [ BreedImage!]!
   }
 
   type Query {
     "Get cat breeds with option to limit the results"
-    getBreeds(limit: Int): [Breed]
+    getBreeds(limit: Int): [Breed!]!
     "Get breeds by name"
-    getBreedsByName(breedName: String): [Breed]
+    getBreedsByName(breedName: String!): [ Breed!]!
   }
 `;
 module.exports = typeDefs;
