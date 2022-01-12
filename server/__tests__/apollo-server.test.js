@@ -1,10 +1,10 @@
 import nock from "nock";
 import { gql } from "apollo-server";
 import { query } from "../test-utils/apollo-server";
-import breed from "../mocks/breed.json";
+import breeds from "../mocks/breeds.json";
 
 describe("Test Cat Wiki API", () => {
-  const baseURL = "https://api.thecatapi.com/v1";
+  const BASE_URL = "https://api.thecatapi.com/v1";
 
   const GET_BREEDS = gql`
     query getBreeds($limit: Int) {
@@ -37,7 +37,7 @@ describe("Test Cat Wiki API", () => {
   `;
 
   it("should return single breed", async () => {
-    nock(baseURL).get("/breeds").query({ limit: 1 }).reply(200, breed);
+    nock(BASE_URL).get("/breeds").query({ limit: 1 }).reply(200, breeds);
 
     const response = await query({
       query: GET_BREEDS,
@@ -45,32 +45,48 @@ describe("Test Cat Wiki API", () => {
     });
 
     expect(response.errors).toBeUndefined();
-    expect(response).toMatchSnapshot();
+    expect(response.data).toMatchSnapshot();
   });
 
   it("should return breeds by name", async () => {
-    nock(baseURL)
+    nock(BASE_URL)
       .get("/breeds/search")
       .query({ q: "persian" })
-      .reply(200, breed);
+      .reply(200, breeds);
 
     const response = await query({
       query: GET_BREEDS_BY_NAME,
       variables: { breedName: "persian" },
     });
-    expect(response).toMatchSnapshot();
+    expect(response.data).toMatchSnapshot();
   });
 
-  it("should throw error if no breed name is given", async () => {
-    nock(baseURL)
+  it("should return null if breed name does not exist", async () => {
+    nock(BASE_URL)
       .get("/breeds/search")
-      .query({ q: "persian" })
+      .query({ q: "whatever" })
       .reply(200);
 
     const response = await query({
-      query: GET_BREEDS_BY_NAME
+      query: GET_BREEDS_BY_NAME,
+      variables: { breedName: "whatever"}
     });
 
-    expect(response.data).toBeUndefined();
+    expect(response.data).toBeNull();
+  });
+
+  it("should throw error if no breed name is provided", async () => {
+    nock(BASE_URL)
+      .get("/breeds/search")
+      .query({ q: "" })
+      .reply(200);
+
+    const response = await query({
+      query: GET_BREEDS_BY_NAME,
+      variables: { breedName: ""}
+    });
+
+    expect(response.errors).toHaveLength(1);
+    expect(response.errors).toMatchSnapshot();
   });
 });

@@ -2,52 +2,34 @@
 
 exports[`Test Cat Wiki API should return breeds by name 1`] = `
 Object {
-  "data": Object {
-    "getBreedsByName": Array [
-      Object {
-        "adaptability": 5,
-        "affectionLevel": null,
-        "childFriendly": null,
-        "description": "Persians are sweet, gentle cats that can be playful or quiet and laid-back. Great with families and children, they absolutely love to lounge around the house. While they don’t mind a full house or active kids, they’ll usually hide when they need some alone time.",
-        "grooming": 5,
-        "healthIssues": null,
-        "id": "pers",
-        "intelligence": 3,
-        "lifeSpan": null,
-        "name": "Persian",
-        "origin": "Iran (Persia)",
-        "socialNeeds": null,
-        "strangerFriendly": null,
-        "temperament": "Affectionate, loyal, Sedate, Quiet",
-      },
-    ],
-  },
-  "errors": undefined,
-  "extensions": undefined,
-  "http": Object {
-    "headers": Headers {
-      Symbol(map): Object {},
+  "getBreedsByName": Array [
+    Object {
+      "adaptability": 5,
+      "affectionLevel": null,
+      "childFriendly": null,
+      "description": "Persians are sweet, gentle cats that can be playful or quiet and laid-back. Great with families and children, they absolutely love to lounge around the house. While they don’t mind a full house or active kids, they’ll usually hide when they need some alone time.",
+      "grooming": 5,
+      "healthIssues": null,
+      "id": "pers",
+      "intelligence": 3,
+      "lifeSpan": null,
+      "name": "Persian",
+      "origin": "Iran (Persia)",
+      "socialNeeds": null,
+      "strangerFriendly": null,
+      "temperament": "Affectionate, loyal, Sedate, Quiet",
     },
-  },
+  ],
 }
 `;
 
 exports[`Test Cat Wiki API should return single breed 1`] = `
 Object {
-  "data": Object {
-    "getBreeds": Array [
-      Object {
-        "id": "pers",
-        "name": "Persian",
-      },
-    ],
-  },
-  "errors": undefined,
-  "extensions": undefined,
-  "http": Object {
-    "headers": Headers {
-      Symbol(map): Object {},
+  "getBreeds": Array [
+    Object {
+      "id": "pers",
+      "name": "Persian",
     },
-  },
+  ],
 }
 `;
