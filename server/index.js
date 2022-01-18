@@ -1,27 +1,14 @@
-const { ApolloServer } = require('apollo-server');
-const typeDefs = require('./schema');
-const resolvers = require('./resolvers');
-const catAPI = require('./datasources/cat-api');
-
-const normalizeCamelToSnakeCase = (string) => (
-  words(toString(string).replace(/['\u2019]/g, '')).reduce((result, word, index) => (
-    result + (index ? '_' : '') + word.toLowerCase()
-  ), '')
-)
-
-const snakeCaseFieldResolver = (source, args, contextValue, info) => {
-  return source[normalizeCamelToSnakeCase(info.fieldName)]
-}
+const { ApolloServer } = require("apollo-server");
+const schema = require("./schema");
+const catAPI = require("./datasources/cat-api");
 
 const server = new ApolloServer({
-  fieldResolver: snakeCaseFieldResolver,
-  typeDefs,
-  resolvers,
+  schema,
   dataSources: () => {
     return {
-      catAPI: new catAPI()
+      catAPI: new catAPI(),
     };
-  }
+  },
 });
 
 async function startApolloServer(server) {

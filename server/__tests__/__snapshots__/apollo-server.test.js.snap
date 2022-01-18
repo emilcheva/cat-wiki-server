@@ -5,18 +5,18 @@ Object {
   "getBreedsByName": Array [
     Object {
       "adaptability": 5,
-      "affectionLevel": null,
-      "childFriendly": null,
+      "affectionLevel": 5,
+      "childFriendly": 2,
       "description": "Persians are sweet, gentle cats that can be playful or quiet and laid-back. Great with families and children, they absolutely love to lounge around the house. While they don’t mind a full house or active kids, they’ll usually hide when they need some alone time.",
       "grooming": 5,
-      "healthIssues": null,
+      "healthIssues": 3,
       "id": "pers",
       "intelligence": 3,
-      "lifeSpan": null,
+      "lifeSpan": "14 - 15",
       "name": "Persian",
       "origin": "Iran (Persia)",
-      "socialNeeds": null,
-      "strangerFriendly": null,
+      "socialNeeds": 4,
+      "strangerFriendly": 2,
       "temperament": "Affectionate, loyal, Sedate, Quiet",
     },
   ],
@@ -32,4 +32,10 @@ Object {
     },
   ],
 }
+`;
+
+exports[`Test Cat Wiki API should throw error if no breed name is provided 1`] = `
+Array [
+  [GraphQLError: Expected Iterable, but did not find one for field "Query.getBreedsByName".],
+]
 `;
