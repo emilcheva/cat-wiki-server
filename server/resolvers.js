@@ -12,8 +12,7 @@ const resolvers = {
   Breed: {
     // get all images for a breed, given a breed id, also get 9 unique images
     breedImage: ({ id }, _, { dataSources }) => {
-      /*eslint no-undef: "off"*/
-      return dataSources.catAPI.getImagesOfBreed(id, limit);
+      return dataSources.catAPI.getImagesOfBreed(id);
     }
   }
 };
