@@ -1,4 +1,3 @@
-
 Backend for the [CatWiki dev challenge](https://devchallenges.io/challenges/f4NJ53rcfgrP6sBMD2jt) implemented with GraphQL and Apollo Server
 
 ## How to use this repo
@@ -12,8 +11,6 @@ To get started:
 
 This will start the GraphQL API server.
 
-
-## The data is the famous Cat REST API ( ! you will need an API Key to access it) 
+## The data is the famous Cat REST API ( ! you will need an API Key to access it)
 
 Documentation --> https://docs.thecatapi.com/
-
