@@ -1,16 +1,14 @@
-const { ApolloServer } = require('apollo-server');
-const resolvers = require('./resolvers');
-const typeDefs = require('./schema');
-const catAPI = require('./datasources/cat-api');
+const { ApolloServer } = require("apollo-server");
+const schema = require("./schema");
+const catAPI = require("./datasources/cat-api");
 
 const server = new ApolloServer({
-  typeDefs,
-  resolvers,
+  schema,
   dataSources: () => {
     return {
-      catAPI: new catAPI()
+      catAPI: new catAPI(),
     };
-  }
+  },
 });
 
 async function startApolloServer(server) {
