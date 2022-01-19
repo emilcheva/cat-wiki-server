@@ -6,14 +6,21 @@ const resolvers = {
     },
     // get a single module by ID, for the module detail page
     getBreedsByName: (_, { breedName }, { dataSources }) => {
-      console.log(breedName)
-     return dataSources.catAPI.getBreedsByName(breedName)
+      console.log(breedName);
+      return dataSources.catAPI.getBreedsByName(breedName);
     },
   },
   Breed: {
+    // camelCase to snake_case mapping
+    lifeSpan: (parent) => parent.life_span,
+    affectionLevel: (parent) => parent.affection_level,
+    childFriendly: (parent) => parent.child_friendly,
+    healthIssues: (parent) => parent.health_issues,
+    socialNeeds: (parent) => parent.social_needs,
+    strangerFriendly: (parent) => parent.stranger_friendly,
     // get all images for a breed, given a breed id, also get 9 unique images
-    breedImage : ({ id }, _, { dataSources }) => {
-      return dataSources.catAPI.getImagesOfBreed(id, limit = 9);
+    breedImage: ({ id }, _, { dataSources }) => {
+      return dataSources.catAPI.getImagesOfBreed(id, (limit = 9));
     },
   },
 };

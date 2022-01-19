@@ -1,41 +1,6 @@
 const { gql } = require("apollo-server");
-const _ = require("lodash");
-const { makeExecutableSchema } = require("@graphql-tools/schema");
-const { mapSchema, getDirective, MapperKind } = require("@graphql-tools/utils");
-const { defaultFieldResolver } = require("graphql");
-const resolvers = require("./resolvers");
-
-// This function takes in a schema and adds snake-casing logic
-// to every resolver for an object field that has a directive with
-// the specified name (we're using `snakeCase`)
-function snakeCaseDirectiveTransformer(schema, directiveName) {
-  return mapSchema(schema, {
-    // Executes once for each object field in the schema
-    [MapperKind.OBJECT_FIELD]: (fieldConfig) => {
-      // Check whether this field has the specified directive
-      const snakeCaseDirective = getDirective(
-        schema,
-        fieldConfig,
-        directiveName
-      )?.[0];
-
-      if (snakeCaseDirective) {
-        // Get this field's original resolver
-        const { resolve = defaultFieldResolver } = fieldConfig;
-
-        fieldConfig.resolve = (source, args, context, info) => {
-          return source[_.snakeCase(info.fieldName)]
-        }
-
-        return fieldConfig;
-      }
-    },
-  });
-}
 
 const typeDefs = gql`
-  directive @snakeCase on FIELD_DEFINITION
-
   "Image url for a breed"
   type BreedImage {
     id: ID!
@@ -49,15 +14,15 @@ const typeDefs = gql`
     name: String
     temperament: String
     origin: String
-    lifeSpan: String @snakeCase
+    lifeSpan: String 
     adaptability: Int
-    affectionLevel: Int @snakeCase
-    childFriendly: Int @snakeCase
+    affectionLevel: Int 
+    childFriendly: Int
     grooming: Int
     intelligence: Int
-    healthIssues: Int @snakeCase
-    socialNeeds: Int @snakeCase
-    strangerFriendly: Int @snakeCase
+    healthIssues: Int 
+    socialNeeds: Int 
+    strangerFriendly: Int 
     breedImage: [BreedImage!]!
   }
 
@@ -68,12 +33,4 @@ const typeDefs = gql`
     getBreedsByName(breedName: String!): [Breed!]!
   }
 `;
-// Create the base executable schema
-let schema = makeExecutableSchema({
-  typeDefs,
-  resolvers,
-});
-
-// Transform the schema by applying directive logic
-schema = snakeCaseDirectiveTransformer(schema, "snakeCase");
-module.exports = schema;
+module.exports = typeDefs;
