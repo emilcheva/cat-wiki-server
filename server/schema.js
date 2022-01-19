@@ -1,14 +1,14 @@
-const { gql } = require("apollo-server");
+const { gql } = require('apollo-server');
 
 const typeDefs = gql`
-"Image url for a breed"
-type BreedImage{
-  id: ID!
-  url: String!
-}
+  "Image url for a breed"
+  type BreedImage {
+    id: ID!
+    url: String!
+  }
 
-"All the info about a cat's breed"
-  type Breed{
+  "All the info about a cat's breed"
+  type Breed {
     id: ID!
     description: String
     name: String
@@ -23,14 +23,14 @@ type BreedImage{
     health_issues: Int
     social_needs: Int
     stranger_friendly: Int
-    breedImage: [ BreedImage ]!
+    breedImage: [BreedImage]!
   }
 
-  type Query{
+  type Query {
     "Get cat breeds with option to limit the results"
     getBreeds(limit: Int): [Breed]
     "Get breeds by name"
-    getBreedsByName(breedName: String): [ Breed ]
+    getBreedsByName(breedName: String): [Breed]
   }
 `;
 module.exports = typeDefs;
