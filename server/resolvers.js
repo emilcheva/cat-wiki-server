@@ -18,9 +18,9 @@ const resolvers = {
     healthIssues: (parent) => parent.health_issues,
     socialNeeds: (parent) => parent.social_needs,
     strangerFriendly: (parent) => parent.stranger_friendly,
-    // get all images for a breed, given a breed id, also get 9 unique images
+    // get all images for a breed, given a breed id
     breedImage: ({ id }, _, { dataSources }) => {
-      return dataSources.catAPI.getImagesOfBreed(id, (limit = 9));
+      return dataSources.catAPI.getImagesOfBreed(id);
     },
   },
 };
