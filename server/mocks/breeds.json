@@ -1,0 +1,18 @@
+[
+  {
+    "id": "pers",
+    "description": "Persians are sweet, gentle cats that can be playful or quiet and laid-back. Great with families and children, they absolutely love to lounge around the house. While they don’t mind a full house or active kids, they’ll usually hide when they need some alone time.",
+    "name": "Persian",
+    "temperament": "Affectionate, loyal, Sedate, Quiet",
+    "grooming": 5,
+    "child_friendly": 2,
+    "affection_level": 5,
+    "adaptability": 5,
+    "life_span": "14 - 15",
+    "origin": "Iran (Persia)",
+    "intelligence": 3,
+    "health_issues": 3,
+    "social_needs": 4,
+    "stranger_friendly": 2
+  }
+]

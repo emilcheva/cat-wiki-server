@@ -1,0 +1,41 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test Cat Wiki API should return breeds by name 1`] = `
+Object {
+  "getBreedsByName": Array [
+    Object {
+      "adaptability": 5,
+      "affectionLevel": 5,
+      "childFriendly": 2,
+      "description": "Persians are sweet, gentle cats that can be playful or quiet and laid-back. Great with families and children, they absolutely love to lounge around the house. While they don’t mind a full house or active kids, they’ll usually hide when they need some alone time.",
+      "grooming": 5,
+      "healthIssues": 3,
+      "id": "pers",
+      "intelligence": 3,
+      "lifeSpan": "14 - 15",
+      "name": "Persian",
+      "origin": "Iran (Persia)",
+      "socialNeeds": 4,
+      "strangerFriendly": 2,
+      "temperament": "Affectionate, loyal, Sedate, Quiet",
+    },
+  ],
+}
+`;
+
+exports[`Test Cat Wiki API should return single breed 1`] = `
+Object {
+  "getBreeds": Array [
+    Object {
+      "id": "pers",
+      "name": "Persian",
+    },
+  ],
+}
+`;
+
+exports[`Test Cat Wiki API should throw error if no breed name is provided 1`] = `
+Array [
+  [GraphQLError: Expected Iterable, but did not find one for field "Query.getBreedsByName".],
+]
+`;
