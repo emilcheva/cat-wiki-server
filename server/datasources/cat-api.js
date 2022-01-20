@@ -1,9 +1,9 @@
-const { RESTDataSource } = require("apollo-datasource-rest");
+const { RESTDataSource } = require('apollo-datasource-rest');
 
 class catAPI extends RESTDataSource {
   constructor() {
     super();
-    this.baseURL = "https://api.thecatapi.com/v1/";
+    this.baseURL = 'https://api.thecatapi.com/v1/';
   }
   getImagesOfBreed(breedId, limit = 9) {
     return this.get(`images/search?breed_ids=${breedId}&limit=${limit}`);

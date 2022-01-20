@@ -1,6 +1,6 @@
-const { createTestClient } = require("apollo-server-testing");
-const catAPI = require("../datasources/cat-api");
-const { ApolloServer } = require("apollo-server");
+const { createTestClient } = require('apollo-server-testing');
+const catAPI = require('../datasources/cat-api');
+const { ApolloServer } = require('apollo-server');
 const resolvers = require('../resolvers');
 const typeDefs = require('../schema');
 
@@ -10,9 +10,9 @@ const createApolloTestServer = () => {
     resolvers,
     dataSources: () => {
       return {
-        catAPI: new catAPI(),
+        catAPI: new catAPI()
       };
-    },
+    }
   });
   return server;
 };

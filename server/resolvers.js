@@ -6,9 +6,8 @@ const resolvers = {
     },
     // get a single module by ID, for the module detail page
     getBreedsByName: (_, { breedName }, { dataSources }) => {
-      console.log(breedName);
       return dataSources.catAPI.getBreedsByName(breedName);
-    },
+    }
   },
   Breed: {
     // camelCase to snake_case mapping
@@ -21,8 +20,8 @@ const resolvers = {
     // get all images for a breed, given a breed id
     breedImage: ({ id }, _, { dataSources }) => {
       return dataSources.catAPI.getImagesOfBreed(id);
-    },
-  },
+    }
+  }
 };
 
 module.exports = resolvers;

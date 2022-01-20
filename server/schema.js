@@ -1,4 +1,4 @@
-const { gql } = require("apollo-server");
+const { gql } = require('apollo-server');
 
 const typeDefs = gql`
   "Image url for a breed"
@@ -14,15 +14,15 @@ const typeDefs = gql`
     name: String
     temperament: String
     origin: String
-    lifeSpan: String 
+    lifeSpan: String
     adaptability: Int
-    affectionLevel: Int 
+    affectionLevel: Int
     childFriendly: Int
     grooming: Int
     intelligence: Int
-    healthIssues: Int 
-    socialNeeds: Int 
-    strangerFriendly: Int 
+    healthIssues: Int
+    socialNeeds: Int
+    strangerFriendly: Int
     breedImage: [BreedImage!]!
   }
 

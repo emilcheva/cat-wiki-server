@@ -4,15 +4,15 @@
   "description": "back-end for the Cat Wiki challenge",
   "scripts": {
     "start": "node server",
-    "test": "jest"
+    "test": "jest",
     "format": "prettier --write .",
     "lint": "eslint .",
     "lint:fix": "eslint --fix"
   },
   "jest": {
     "transform": {
-    }
       "^.+\\.[t|j]sx?$": "babel-jest"
+    }
   },
   "dependencies": {
     "apollo-datasource-rest": "^3.4.0",
@@ -28,7 +28,11 @@
     "graphql-tools": "^8.2.0",
     "jest": "^27.4.7",
     "nock": "^13.2.1",
-    "nodemon": "^2.0.4"
+    "nodemon": "^2.0.4",
+    "eslint": "^8.7.0",
+    "eslint-plugin-jest": "^25.7.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "prettier": "^2.5.1"
   },
   "repository": {
     "type": "git",
