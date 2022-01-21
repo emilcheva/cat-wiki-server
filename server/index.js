@@ -4,6 +4,10 @@ const typeDefs = require('./schema');
 const catAPI = require('./datasources/cat-api');
 
 const server = new ApolloServer({
+  cors: {
+    origin: "*",
+    credentials: true,
+  },
   typeDefs,
   resolvers,
   dataSources: () => {
